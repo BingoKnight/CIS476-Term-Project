@@ -2,7 +2,7 @@
 
 ## Set Up
 1. To run this program you must first go to ./frontend/my-vacation-frontend and run `npm install`
-2. Then go into ./backend and run `pip install django djangorestframework django-heroku django-cors-headers`
+2. Then go into ./backend and run `pip install django djangorestframework django-heroku django-cors-headers dj-database-url`
 3. To build the database just run `python db_loader.py` from the root directory
 
 ## Run
