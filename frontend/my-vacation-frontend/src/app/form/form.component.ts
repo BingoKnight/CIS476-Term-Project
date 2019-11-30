@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute,
               private flightService: FlightService) { }
 
+  // get list of states in database on intialization
   ngOnInit() {
     $.ajax({
       async: false,
@@ -37,6 +38,7 @@ export class FormComponent implements OnInit {
     this.toggleReturnDate()
   }
 
+  // display return date field if round trip is selected, else hide it
   toggleReturnDate() {
     let selected = $('#select-trip option:selected');
     let returnCol = $('#return-date-col');
@@ -48,15 +50,17 @@ export class FormComponent implements OnInit {
   }
 
   
-
+  // display cities in based on selected state
   fromStateChanged() {
     this.fromCities = this.getCityList($('#from-state option:selected').val());
   }
 
+  // display cities in based on selected state
   toStateChanged() {
     this.toCities = this.getCityList($('#to-state option:selected').val());
   }
 
+  // pull list of cities queried on the state code
   getCityList(stateCode){
     let temp = null
 
@@ -72,14 +76,9 @@ export class FormComponent implements OnInit {
     return temp;
   }
 
+  // validate that required fields are not empty
   isBlankOrNull(request) {
     let isValidData = false;
-    // if(request.toCity === '-Select One-'){
-    //   $('#to-city').addClass('error-highlight');
-    //   isValidData = true;
-    // } else {
-    //   $('#to-city').removeClass('error-highlight');
-    // }
     
     if(request.fromCity === '-Select One-'){
       $('#from-city').addClass('error-highlight');
@@ -87,13 +86,6 @@ export class FormComponent implements OnInit {
     } else {
       $('#from-city').removeClass('error-highlight');
     }
-    
-    // if(request.toState === '-Select One-'){
-    //   $('#to-state').addClass('error-highlight');
-    //   isValidData = true;
-    // } else {
-    //   $('#to-state').removeClass('error-highlight');
-    // }
     
     if(request.fromState === '-Select One-'){
       $('#from-state').addClass('error-highlight');
@@ -119,6 +111,7 @@ export class FormComponent implements OnInit {
     return isValidData;
   }
 
+  // field validation
   isValid(request) {
     let today : Date = new Date();
     let departDate : Date = new Date(request.depart);
@@ -166,6 +159,7 @@ export class FormComponent implements OnInit {
     return isValidData;
   }
 
+  // validate fields then request flights based on input data
   searchFlights() {
 
     let toState = $('#to-state option:selected').val() == '-Select One-' ? null : $('#to-state option:selected').val().trim();

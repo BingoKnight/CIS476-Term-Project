@@ -14,6 +14,7 @@ export class ResultsComponent implements OnInit {
 
   constructor(private flightService: FlightService) { }
 
+  // on intialization get the list of outbound, inbound flights, and flight type persisted from the flight service
   ngOnInit() {
     this.flightService.getOutboundFlights().subscribe(flights => this.outboundFlights = flights);
     this.flightService.getReturnFlights().subscribe(flights => this.returnFlights = flights);

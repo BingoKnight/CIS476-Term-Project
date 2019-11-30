@@ -1,8 +1,7 @@
 from django.db import models
 from decimal import Decimal
 
-# number of seats per flight
-# time leaving
+# flight db layout
 class FlightModel(models.Model):
   from_state    = models.CharField(max_length=20)
   from_city     = models.CharField(max_length=100)

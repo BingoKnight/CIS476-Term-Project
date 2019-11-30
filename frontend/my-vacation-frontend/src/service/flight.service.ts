@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { of } from 'rxjs';
 
+// flight service to persist the list of flights and flight type from the backend
+
 @Injectable({
   providedIn: 'root'
 })

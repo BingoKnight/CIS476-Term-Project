@@ -6,15 +6,16 @@ from .serializers import FlightModelSerializer
 from rest_framework.decorators import api_view
 import datetime
 
+# Get the list of all flights in the database, for debugging purposes
 @api_view(['GET'])
 def get_all(request):
   data = FlightModel.objects.all()
   serializer = FlightModelSerializer(data, many=True)
   return JsonResponse(serializer.data, safe=False)
 
-# After update to make to location optional, failing to filter
-# In progress modal not displaying
-# TODO: backend validation
+
+# Get list of flights that match request criteria such as:
+# the to and from locations, the dates of depature and arrival, and one way or round trip
 @api_view(['POST'])
 def get_flight_list(request):
   return_queryset = None
