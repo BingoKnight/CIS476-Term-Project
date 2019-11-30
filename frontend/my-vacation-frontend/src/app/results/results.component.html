@@ -1,0 +1,60 @@
+<div class="container">
+  <h2 class="display-4">Depart</h2>
+  <table class="table table-striped table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <th>From</th>
+        <th></th>
+        <th>To</th>
+        <th>Date</th>
+        <th>Cost</th>
+        <th>Seats</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="outboundFlights && outboundFlights.length > 0 && ((returnFlights && returnFlights.length > 0) || !isRoundTrip); else noFlights">
+      <tr *ngFor='let flight of outboundFlights'>
+        <td width="18%">{{ flight.from_city }}, {{ flight.from_state }}</td>
+        <td width="5%"><span class="to-arrow">⭆</span></td>
+        <td width="18%">{{ flight.to_city }}, {{ flight.to_state }}</td>
+        <td>{{ flight.depart_date }}</td>
+        <td>${{ flight.cost }}</td>
+        <td>{{ flight.seats }}</td>
+      </tr>
+    </tbody>
+    <ng-template #noFlights>
+        <tr>
+          <td colspan=6 class="text-center">No flights available</td>
+        </tr>
+      </ng-template>
+  </table>
+  <div *ngIf="isRoundTrip">
+    <h2 class="display-4">Return</h2>
+    <table class="table table-striped table-dark">
+      <thead class="thead-dark">
+        <tr>
+          <th>From</th>
+          <th></th>
+          <th>To</th>
+          <th>Date</th>
+          <th>Cost</th>
+          <th>Seats</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="outboundFlights && returnFlights && outboundFlights.length > 0 && returnFlights.length > 0; else noFlights">
+        <tr *ngFor='let flight of returnFlights'>
+          <td width="18%">{{ flight.from_city }}, {{ flight.from_state }}</td>
+          <td width="5%"><span class="to-arrow">⭆</span></td>
+          <td width="18%">{{ flight.to_city }}, {{ flight.to_state }}</td>
+          <td>{{ flight.depart_date }}</td>
+          <td>${{ flight.cost }}</td>
+          <td>{{ flight.seats }}</td>
+        </tr>
+      </tbody>
+      <ng-template #noFlights>
+          <tr>
+            <td colspan=6 class="text-center">No flights available</td>
+          </tr>
+        </ng-template>
+    </table>
+  </div>
+</div>

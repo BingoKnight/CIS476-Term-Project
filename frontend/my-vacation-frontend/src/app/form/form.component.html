@@ -1,0 +1,85 @@
+<div class="alert alert-danger" id="invalid-alert">
+  <h5 class="alert-heading border-bottom">Invalid Data</h5>
+  <hr>
+  <ul>
+    <li *ngFor="let error of errors">{{ error }}</li>
+  </ul>
+</div>
+<div id="flight-form" class="form-group justify-content-center bg-dark">
+  <div class="section">
+    <div class="row">
+      <div class="col">
+        <h2 class="display-4">Flight Selection</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <select id="select-trip" class="form-control" (change)="tripChange()">
+          <option value="RT" selected>Round Trip</option>
+          <option value="OW">One Way</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label for="depart-date">Depart Date</label>
+        <input type="date" id="depart-date" name="depart-date" class="form-control" />
+      </div>
+      <div class="col" id="return-date-col">
+          <label for="return-date">Return Date</label>
+          <input type="date" id="return-date" name="return-date" class="form-control" />
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3 class="display-4">Where From?</h3>
+    <div class="row">
+      <div class="col">
+        <label>State</label>
+        <select id="from-state" class="form-control" (change)="fromStateChanged()">
+          <option value="-Select One-" selected>-Select One-</option>
+          <option *ngFor="let state of states" [value]="state.state_code">
+            {{ state.state_code }}
+          </option>
+        </select>
+      </div>
+      <div class="col">
+        <label>City</label>
+        <select id="from-city" class="form-control">
+          <option value="-Select One-" selected>-Select One-</option>
+          <option *ngFor="let city of fromCities" [value]="city.id">
+            {{ city.city_name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h3 class="display-4">Where To? (Optional)</h3>
+    <div class="row">
+      <div class="col">
+        <label>State</label>
+        <select id="to-state" class="form-control" (change)="toStateChanged()">
+          <option value="-Select One-" selected>-Select One-</option>
+          <option *ngFor="let state of states" [value]="state.state_code">
+            {{ state.state_code }}
+          </option>
+        </select>
+      </div>
+      <div class="col">
+        <label>City</label>
+        <select id="to-city" class="form-control">
+          <option value="-Select One-" selected>-Select One-</option>
+          <option *ngFor="let city of toCities" [value]="city.id">
+            {{ city.city_name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <button class="btn btn-primary btn-block" (click)="searchFlights()">Search</button>
+    </div>
+  </div>
+</div>

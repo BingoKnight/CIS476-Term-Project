@@ -1,0 +1,43 @@
+.form-group {
+  padding: 30px;
+  width: 40%;
+  min-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  color: #ffffff;
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+.row {
+  padding: 10px 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+button {
+  margin-top: 10px;
+}
+
+h3.display-4{
+  font-size: 1.5rem;
+}
+
+.section {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 0.5px solid #6e6e6e
+}
+
+.alert{
+  width: 40%;
+  min-width: 400px;
+  margin: 30px auto -20px auto;
+  display: none;
+}
+
+.error-highlight{
+  border: 2px solid rgb(253, 113, 113);
+}
