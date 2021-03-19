@@ -3,4 +3,4 @@ Django==2.2.7
 gunicorn==19.6.0
 psycopg2==2.6.2
 whitenoise==3.2
-djangorestframework==3.10.3
+djangorestframework==3.11.2
